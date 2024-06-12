@@ -1,0 +1,23 @@
+{
+  "name": "cristian/bienesraices_inicio",
+  "description": "Creando un proyecto con programacion orientada a objetos",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "Model\\": "./models",
+      "MVC\\": "./",
+      "Controllers\\": "./controllers"
+    }
+  },
+  "authors": [
+    {
+      "name": "Camilo Pereira",
+      "email": "pereiracamilo51@gmail.com"
+    }
+  ],
+  "require": {
+    "intervention/image": "2.7",
+    "phpmailer/phpmailer": "^6.9",
+    "vlucas/phpdotenv": "^5.6"
+  }
+}
