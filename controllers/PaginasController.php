@@ -56,11 +56,11 @@
                 $mail = new PHPMailer();
 
                 $mail->isSMTP();
-                $mail->Host = 'sandbox.smtp.mailtrap.io';
+                $mail->Host = $_ENV['EMAIL_HOST'];
                 $mail->SMTPAuth = true;
-                $mail->Port = 2525;
-                $mail->Username = '22ffdc76ae451f';
-                $mail->Password = 'd4c8fbbc2145b5';
+                $mail->Port = $_ENV['EMAIL_PORT'];
+                $mail->Username = $_ENV['EMAIL_USER'];
+                $mail->Password = $_ENV['EMAIL_PASS'];
                 $mail->SMTPSecure = 'tls';
 
                 $mail->setFrom('admin@bienesraices.com');
