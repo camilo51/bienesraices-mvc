@@ -1,0 +1,72 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$auth = $_SESSION['login'] ?? null;
+
+if (!isset($inicio)) {
+    $inicio = false;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../build/css/app.css" />
+</head>
+
+<body>
+
+
+    <header class="header <?= $inicio ? 'inicio' : '' ?>">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="/">
+                    <img src="/build/img/logo.svg" alt="Logo de Bienes Raices" />
+                </a>
+                <div class="mobile-menu">
+                    <img src="/build/img/barras.svg" alt="Icono menu resposive">
+                </div>
+                <div class="derecha">
+                    <img src="/build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
+                    <?php include __DIR__ . '/navegacion.php' ?>
+                </div>
+            </div>
+            <!-- .barra -->
+            <?php if ($inicio) { ?>
+                <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
+            <?php } ?>
+        </div>
+    </header>
+    <div class="layout-admin">
+        <section class="seccion-admin">
+            <h2>Dashboard</h2>
+            <nav class="navegacion-admin">
+                <a href="/admin/propiedades"><span><i class="fa-solid fa-eye"></i></span> Ver Propiedades</a>
+                <a href="/admin/propiedades/crear"><span><i class="fa-solid fa-plus"></i></span> Nueva Propiedad</a>
+                <a href="/admin/vendedores"><span><i class="fa-solid fa-eye"></i></span> Ver Vendedores</a>
+                <a href="/admin/vendedores/crear"><span><i class="fa-solid fa-plus"></i></span> Nuevo(a) Vendedor</a>
+                <a href="/admin/entradas"><span><i class="fa-solid fa-eye"></i></span> Ver Entradas</a>
+                <a href="/admin/entradas/crear"><span><i class="fa-solid fa-plus"></i></span> Nueva Entrada</a>
+            </nav>
+        </section>
+
+        <?= $contenido ?>
+    </div>
+
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <?php include __DIR__ . '/navegacion.php' ?>
+        </div>
+        <p class="copyright">Todos los derechos Reservados <?= date('Y') ?> &copy;</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../../build/js/bundle.min.js"></script>
+</body>
+
+</html>

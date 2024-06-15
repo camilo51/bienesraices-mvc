@@ -21,45 +21,23 @@
 <div class="contenedor seccion seccion-inferior">
     <section class="blog">
         <h3>Nuestro Blog</h3>
+        <?php foreach ($entradas as $entrada) : ?>
+            <article class="entrada-blog">
+                <div class="imagen">
+                    <img loading="lazy" src="imagenes/entradas/<?= $entrada->imagen ?>" alt="Texto de entrada blog" width="500" height="300" />
+                </div>
+                <div class="texto-entrada">
+                    <a href="/entrada?id=<?= $entrada->id ?>">
+                        <h4><?= $entrada->titulo ?></h4>
+                        <p class="informacion-meta">Escrito el <span><?= $entrada->fecha ?></span></p>
 
-        <article class="entrada-blog">
-            <div class="imagen">
-                <picture>
-                    <source srcset="build/img/blog1.avif" type="image/avif" />
-                    <source srcset="build/img/blog1.webp" type="image/webp" />
-                    <source srcset="build/img/blog1.jpg" type="image/jpeg" />
-                    <img loading="lazy" src="build/img/blog1.jpg" alt="Texto de entrada blog" width="500" height="300">
-                </picture>
-            </div>
-            <div class="texto-entrada">
-                <a href="entrada.html">
-                    <h4>Terraza en el techo de tu casa</h4>
-                    <p class="informacion-meta">Escrito el <span>20/10/2024</span> por: <span>Admin</span></p>
-
-                    <p>Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorrando dinero</p>
-
-                </a>
-            </div>
-        </article>
-        <article class="entrada-blog">
-            <div class="imagen">
-                <picture>
-                    <source srcset="build/img/blog2.avif" type="image/avif" />
-                    <source srcset="build/img/blog2.webp" type="image/webp" />
-                    <source srcset="build/img/blog2.jpg" type="image/jpeg" />
-                    <img loading="lazy" src="build/img/blog2.jpg" alt="Texto de entrada blog" width="500" height="300">
-                </picture>
-            </div>
-            <div class="texto-entrada">
-                <a href="entrada.html">
-                    <h4>Guia para la decoracion de tu hogar</h4>
-                    <p class="informacion-meta">Escrito el <span>20/10/2024</span> por: <span>Admin</span></p>
-
-                    <p>Maximiza el espacio de tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio</p>
-
-                </a>
-            </div>
-        </article>
+                        <p>
+                            <?= $entrada->informacion ?>
+                        </p>
+                    </a>
+                </div>
+            </article>
+        <?php endforeach ?>
     </section>
     <section class="testimoniales">
         <h3>Testimoniales</h3>

@@ -4,6 +4,7 @@
     namespace Controllers;
     use MVC\Router;
     use Model\Propiedad;
+    use Model\Entrada;
     use PHPMailer\PHPMailer\PHPMailer;
 
     class PaginasController
@@ -11,10 +12,12 @@
         public static function index(Router $router)
         {
             $propiedades = Propiedad::get(3, "DESC");
+            $entradas = Entrada::get(2, "DESC");
             $inicio = true;
 
             $router->render('paginas/index', [
                 'propiedades' => $propiedades,
+                'entradas' => $entradas,
                 'inicio' => $inicio
             ]);
         }
@@ -24,10 +27,12 @@
         }
         public static function propiedades(Router $router)
         {
-            $propiedades = Propiedad::all();
-
+            $paginacion = Propiedad::paginate(9, 'DESC');
+            $propiedades = $paginacion->resultados;
+            $links = $paginacion->links('/propiedades');
             $router->render('paginas/propiedades', [
-                'propiedades' => $propiedades
+                'propiedades' => $propiedades,
+                'links' => $links
             ]);
         }
         public static function propiedad(Router $router)
@@ -41,11 +46,19 @@
         }
         public static function blog(Router $router)
         {
-            $router->render('paginas/blog');
+            $entradas = Entrada::all('DESC');
+            $router->render('paginas/blog', [
+                'entradas' => $entradas
+            ]);
         }
         public static function entrada(Router $router)
         {
-            $router->render('paginas/entrada');
+            $id = validarORedireccionar('/blog');
+            $entrada = Entrada::find($id);
+
+            $router->render('paginas/entrada',[
+                'entrada' => $entrada
+            ]);
         }
         public static function contacto(Router $router)
         {

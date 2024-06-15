@@ -1,7 +1,7 @@
 <main class="contenedor seccion">
     <h1>Actualizar propiedad</h1>
 
-    <a href="/admin" class="boton-verde">Volver</a>
+    <a href="/admin/propiedades" class="boton-verde">Volver</a>
 
     <?php foreach ($errores as $error): ?>
         <div class="alerta error">

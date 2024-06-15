@@ -1,0 +1,29 @@
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.layout-admin {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    .seccion{
+        margin-top: 0;
+    }
+}
+.seccion-admin{
+    background-color: v.$grisOscuro;
+    padding-inline: 1rem;
+
+}
+.navegacion-admin{
+    display: flex;
+    flex-direction: column;
+
+    a{
+        border-bottom: 1px solid darken(v.$blanco, 40%);
+        margin-top: 0;
+        padding: 1rem .5rem;
+
+        &:nth-child(even){
+            background-color: darken(v.$grisOscuro, 2.5%);
+        }
+    }
+}

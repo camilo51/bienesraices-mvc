@@ -10,15 +10,22 @@
     class PropiedadController
     {
         public static function index(Router $router){
-            $propiedades = Propiedad::all();
+            
+
+            $paginacion = Propiedad::paginate(8, 'DESC');
+            $propiedades = $paginacion->resultados;
+            $links = $paginacion->links('/admin/propiedades');
+
+
             $vendedores = Vendedor::all();
             $resultado = $_GET['resultado'] ?? null;
 
-            $router->render('propiedades/admin', [
+            $router->render('propiedades/index', [
                 'propiedades' => $propiedades,
                 'resultado' => $resultado,
-                'vendedores' => $vendedores
-            ]);
+                'vendedores' => $vendedores,
+                'links' => $links
+            ], 'admin');
         }
 
         public static function crear(Router $router){

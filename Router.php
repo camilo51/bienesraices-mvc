@@ -23,15 +23,15 @@
             // Arreglo de rutas protegidas
             $rutas_protegidas = [
                 '/admin',
-                '/propiedades/actualizar',
-                '/propiedades/crear',
-                '/propiedades/eliminar',
-                '/vendedores/crear',
-                '/vendedores/eliminar',
-                '/vendedores/actualizar',
+                '/admin/propiedades/actualizar',
+                '/admin/propiedades/crear',
+                '/admin/propiedades/eliminar',
+                '/admin/vendedores/crear',
+                '/admin/vendedores/eliminar',
+                '/admin/vendedores/actualizar',
+                '/admin/entradas/crear',
             ];
-
-            $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+            $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
             $metodo = $_SERVER['REQUEST_METHOD'];
 
             if($metodo === 'GET'){
@@ -53,7 +53,7 @@
             }    
         }
 
-        public function render($view, $datos = []){
+        public function render($view, $datos = [], $layout = 'layout'){
 
             foreach($datos as $key => $value){
                 $$key = $value;
@@ -62,7 +62,7 @@
             ob_start();
             include __DIR__ . "/views/$view.php";
             $contenido = ob_get_clean();
-            include __DIR__ . "/views/layout.php";
+            include __DIR__ . "/views/layouts/$layout.php";
 
         }
 

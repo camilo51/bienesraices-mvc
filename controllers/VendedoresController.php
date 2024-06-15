@@ -7,6 +7,17 @@
 
     class VendedoresController
     {
+        public static function index(Router $router)
+        {
+            $paginacion = Vendedor::paginate(8, 'DESC');
+            $vendedores = $paginacion->resultados;
+            $links = $paginacion->links('/admin/vendedores');
+            $router->render('vendedores/index', [
+                'vendedores' => $vendedores,
+                'links' => $links
+            ], 'admin');
+        }
+
         public static function crear(Router $router)
         {
             $errores = Vendedor::getErrores();  

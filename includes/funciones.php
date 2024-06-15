@@ -5,6 +5,7 @@ define('TEMPLATES_URL', __DIR__ . '/templates');
 define('FUNCIONES_URL', __DIR__ . 'funciones.php');
 define('CARPETA_IMAGENES_PROPIEDADES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/propiedades/');
 define('CARPETA_IMAGENES_VENDEDORES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/vendedores/');
+define('CARPETA_IMAGENES_ENTRADAS', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/entradas/');
 
 
 function incluirTemplate( string $template, bool $inicio = false ) {
@@ -58,8 +59,8 @@ function mostrarNotificacion($codigo) {
     return $mensaje;
 }
 
-function validarORedireccionar(string $url){
-    $id = $_GET['id'];
+function validarORedireccionar(string $url,  string $valor = 'id'){
+    $id = $_GET[$valor];
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
     if(!$id) {
