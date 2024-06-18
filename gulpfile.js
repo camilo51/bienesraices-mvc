@@ -80,5 +80,5 @@ export function dev() {
     watch('src/img/**/*.{png,jpg}', imagenes)
 }
 
-exports.default =  parallel( js, css, imagenes, dev );
-exports.build = parallel( js, css, imagenes )
+export default parallel( js, css, imagenes, dev );
+export const build =  parallel( js, css, imagenes );

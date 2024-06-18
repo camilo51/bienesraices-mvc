@@ -8,6 +8,10 @@
     background-color: v.$grisOscuro;;
     padding: 1rem 0 3rem 0;
 
+    @include m.tablet{
+        height: auto;
+    }
+
     &.inicio{
         background-position: center center;
         background-size: cover;

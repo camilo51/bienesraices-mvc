@@ -10,7 +10,25 @@
     a,h1,h2,h3,h4{
         color: v.$gris;
     }
+    .derecha-contenido{
+        background-color: v.$grisOscuro;
+        @include m.tablet {
+            background-color: transparent
+        };
+    }
+    .dark-mode-boton{
+        filter: invert(100%);
+    }
+    .header .navegacion{
+        a{
+            color: v.$blanco;
+            border-bottom: .1rem solid darken(v.$blanco, 50%);
 
+            @include m.tablet {
+                border-bottom: none;
+            };
+        }
+    }
     .anuncio,
     .resumen-propiedad{
         background-color: v.$grisOscuro;
@@ -47,8 +65,24 @@
     }
 
     table.propiedades{
+        tr{
+            background-color: v.$grisOscuro;
+            @include m.tablet {
+                background:none; 
+            };
+        }
         td{
             color: v.$blanco;
         }
     }
+    .paginacion{
+        .active{
+            background-color: v.$grisOscuro;
+        }
+        a,p{
+            color: v.$blanco;
+        }
+    }
+
+
 }

@@ -3,7 +3,11 @@
 
 .layout-admin {
     display: grid;
-    grid-template-columns: 25% 75%;
+    
+    @include m.tablet{ 
+        grid-template-columns: 25% 75%;
+        
+    };
     .seccion{
         margin-top: 0;
     }
@@ -11,19 +15,33 @@
 .seccion-admin{
     background-color: v.$grisOscuro;
     padding-inline: 1rem;
+    
+    @include m.tablet{
+        position: sticky;
+        top: 0;
+        min-height: calc(100vh - 14.519rem);
+        max-height: 100vh;
+    };
 
+    h2{
+        color: v.$blanco;
+    }
 }
 .navegacion-admin{
     display: flex;
     flex-direction: column;
 
     a{
+        color: v.$blanco;
         border-bottom: 1px solid darken(v.$blanco, 40%);
         margin-top: 0;
         padding: 1rem .5rem;
 
         &:nth-child(even){
             background-color: darken(v.$grisOscuro, 2.5%);
+        }
+        &:last-of-type{
+            border-bottom: none;
         }
     }
 }

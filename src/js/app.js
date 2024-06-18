@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     eventListeners();
     darkMode();
+    widthHeader();
+    heightHeader();
 });
 
 // Dark Mode
@@ -41,14 +43,49 @@ const eventListeners = () => {
     mobileMenu.addEventListener("click", navegacionResponsive);
 
     //  Muestra campos condicionales
-
     const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
     metodoContacto.forEach((input) => input.addEventListener("click", mostrarMetodosContacto));
 };
 const navegacionResponsive = () => {
-    const navegacion = document.querySelector(".navegacion");
+    const navegacion = document.querySelector(".derecha-contenido");
     navegacion.classList.toggle("mostrar");
 };
+const widthHeader = () => {
+    const header = document.querySelector(".header");
+    const titulo = document.querySelector(".header .contenido-header h1");
+    const barraResponsive = document.querySelector(".header .contenido-header .barra-responsive");
+    if (innerWidth < 768 && header.children[0].classList.contains("contenedor")) {
+        header.children[0].classList.remove("contenedor");
+        if (titulo) {
+            titulo.classList.add('contenedor');
+        }
+
+        barraResponsive.classList.add("contenedor");
+    }else{
+        header.children[0].classList.add("contenedor");
+        if (titulo) {
+            titulo.classList.remove("contenedor");
+        }
+        barraResponsive.classList.remove("contenedor");
+    }
+};
+
+const heightHeader = () => {
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navContent = document.querySelector(".derecha-contenido");
+
+        mobileMenu.addEventListener("click", () => {
+            if (navContent.style.height === "0px" || navContent.style.height === "") {
+                navContent.style.visibility = "visible";
+                navContent.style.opacity = "1";
+                navContent.style.height = navContent.scrollHeight + "px";
+            } else {
+                navContent.style.visibility = "hidden";
+                navContent.style.opacity = "0";
+                navContent.style.height = "0px";
+            }
+        });
+}
 
 const mostrarMetodosContacto = (e) => {
     const contactoDiv = document.querySelector("#contacto");

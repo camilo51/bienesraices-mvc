@@ -5,9 +5,14 @@ $color-border: darken(v.$blanco, 50%);
 
 .paginacion{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-block: 5rem;
+
+    @include m.telefono {
+        flex-direction: row;
+    };
 
     p{
         margin: 0;
@@ -22,13 +27,22 @@ $color-border: darken(v.$blanco, 50%);
         // gap: 1rem;
         align-items: center;
         
+        .active{
+            background-color: $color-border;
+        }
         a,p{
-            font-size: 1.8rem;
+            color: v.$negro;
             border: .1rem solid $color-border;
             border-left: none;
-            padding: .5rem 1rem;
-            min-width: 4rem;
+            padding: .2rem 1rem;
+            min-width: 3rem;
             text-align: center;
+            font-size: 1.6rem;
+            @include m.tablet {
+                font-size: 1.8rem;
+                min-width: 4rem;
+                padding: .5rem 1rem;
+            };
             
         }
         a:last-child{

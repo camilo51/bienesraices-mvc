@@ -5,20 +5,61 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+
+
+    position: relative;
 
     @include m.tablet{
+        width: auto;
         align-items: flex-end;
     }
+
+    &-contenido{
+        display: flex;
+        flex-direction: column;
+
+        background-color: v.$blanco;
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+        transition: visibility .3s ease-in-out, opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+
+        @include m.tablet{
+            height: auto;
+            background-color: transparent;
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+            overflow: initial;
+            position: initial;
+        }
+
+    }
+    &-dark-mode{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        @include m.tablet{
+            width: auto;
+        }
+    }
     .dark-mode-boton{
+        box-sizing: content-box;
         width: 3rem;
-        margin-block: 3rem;
-        filter: invert(100%);
-    
+        padding: 2rem;
+        
         &:hover{
             cursor: pointer;
         }
-
+        
         @include m.tablet{
+            padding: 1rem;
+            filter: invert(100%);
             margin-top: 0;
         }
     }
@@ -32,39 +73,53 @@
     @include m.tablet{
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
     };
+
+    &-responsive{
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        gap: 1rem;
+    }
 }
 
-.navegacion{
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
-    transition: visibility .3s ease-in-out, opacity 0.5s linear, height 0.5s linear;
+.header .navegacion{
+    display: flex;
+    flex-direction: column;
 
-    @include m.tablet{
-        display: flex;
-        align-items: center;
-        opacity: 1;
-        visibility: visible;
-    }
-
+    @include m.tablet {
+        flex-direction: row;
+    };
     a{
-        color: v.$blanco;
+        color: v.$grisOscuro;
         text-decoration: none;
         font-size: 2.2rem;
         display: block;
-        text-align: center;
-
+        padding-left: 1rem;
+        border-bottom: .1rem solid lighten(v.$negro, 50%);
+        &:last-of-type{
+            border-bottom: none;
+        }
+    
         @include m.tablet{
+            color: v.$blanco;
+            text-align: center;
             margin-right: 2rem;
             font-size: 1.4rem;
+            padding-left: 0;
+            border-bottom: none;
 
 
             &:last-of-type{
                 margin-right: 0;
             }
         }
+    }
+}
+.footer .navegacion{
+    a{
+        color: v.$blanco;
+        margin-right: 1rem;
     }
 }
 .mobile-menu{
@@ -78,5 +133,5 @@
 .mostrar{
     visibility: visible;
     opacity: 1;
-    height: auto;
+    // height: 27.2rem;
 }

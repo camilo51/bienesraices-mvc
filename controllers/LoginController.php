@@ -6,6 +6,12 @@
     class LoginController
     {
         public static function login(Router $router){
+            $auth = $_SESSION['login'];
+
+            if ($auth) {
+                header('Location: /');
+            }
+
             $errores = [];
 
             if($_SERVER['REQUEST_METHOD'] === 'POST'){

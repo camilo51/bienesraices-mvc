@@ -26,15 +26,22 @@ if (!isset($inicio)) {
     <header class="header <?= $inicio ? 'inicio' : '' ?>">
         <div class="contenedor contenido-header">
             <div class="barra">
-                <a href="/">
-                    <img src="/build/img/logo.svg" alt="Logo de Bienes Raices" />
-                </a>
-                <div class="mobile-menu">
-                    <img src="/build/img/barras.svg" alt="Icono menu resposive">
+                <div class="barra-responsive">
+                    <a href="/">
+                        <img src="/build/img/logo.svg" alt="Logo de Bienes Raices" />
+                    </a>
+                    <div class="mobile-menu">
+                        <img src="/build/img/barras.svg" alt="Icono menu resposive">
+                    </div>
                 </div>
+
                 <div class="derecha">
-                    <img src="/build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
-                    <?php include __DIR__ . '/navegacion.php' ?>
+                    <div class="derecha-contenido">
+                        <div class="derecha-dark-mode">
+                            <img src="/build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
+                        </div>
+                        <?php include __DIR__ . '/navegacion.php' ?>
+                    </div>
                 </div>
             </div>
             <!-- .barra -->
